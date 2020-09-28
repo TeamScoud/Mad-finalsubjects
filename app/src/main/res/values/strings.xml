@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Mad2</string>
+    <string name="btn">Save</string>
+    <string name="btn1">Delete</string>
+    <string name="btn3">Update</string>
+    <string name="btn4">COUNT</string>
+    <string name="button">SHOW</string>
+    <string name="button3">BACK</string>
+    <string name="txt">ID :</string>
+    <string name="button2">SEARCH</string>
+    <string name="btn2">SEARCH</string>
+</resources>
