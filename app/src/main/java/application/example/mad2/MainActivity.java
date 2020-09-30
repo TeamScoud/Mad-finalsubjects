@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -64,29 +65,47 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
     public void addData(View view){
 
         DBHandler dbHandler = new DBHandler(this);
-        long val = dbHandler.addInfo(edtSubject.getText().toString());
 
-         String Name = edtSubject.getText().toString();
+        String spattern = "[a-z]+";
+        if (edtSubject.getText().toString().isEmpty()){
 
-        if(Name.length()==0){
+            //Toast.makeText(this,"Enter Subject", Toast.LENGTH_SHORT).show();
+             edtSubject.setError("FIELD CANNOT BE EMPTY");
 
-            edtSubject.requestFocus();
-            edtSubject.setError("FIELD CANNOT BE EMPTY");
+
+        }else if(!edtSubject.getText().toString().matches(spattern)){
+
+            edtSubject.setError("Enter Only Simple Alphabetical Character");
+        }
+        else {
+            long val = dbHandler.addInfo(edtSubject.getText().toString());
+            Toast.makeText(this,"Subject Added Successfully", Toast.LENGTH_SHORT).show();
+        }
+
+         //String Name = edtSubject.getText().toString();
+
+        /*if(TextUtils.isEmpty(Name)){
+
+            //edtSubject.requestFocus();
+
+            return;
 
         }else if(!Name.matches("[a-zA-Z ]+")){
 
-            edtSubject.requestFocus();
+            //edtSubject.requestFocus();
             edtSubject.setError("Enter Only Alphabetical Character");
+            return;
 
-        }else if(val>0){
+       if(val>0){
 
             Toast.makeText(this,"Subject Added Successfully", Toast.LENGTH_SHORT).show();
         }else{
             Toast.makeText(this,"Subject Not Added Successfully", Toast.LENGTH_SHORT).show();
-        }
+        }*/
 
     }
 
@@ -148,6 +167,7 @@ public class MainActivity extends AppCompatActivity {
            Toast.makeText(this," Data not count Successfully",Toast.LENGTH_SHORT).show();
        }
 
+
     }
 
 
@@ -177,7 +197,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        Toast.makeText(this, e1.getText().toString() + " Deleted Successfully", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, e1.getText().toString() + " Deleted Successfully", Toast.LENGTH_SHORT).show();
     }
 
 
@@ -241,7 +261,6 @@ public class MainActivity extends AppCompatActivity {
         builder.show();
 
     }
-
 
 
 

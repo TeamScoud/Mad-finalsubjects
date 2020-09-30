@@ -30,13 +30,14 @@ public class DBHandler extends SQLiteOpenHelper {
 
    EditText edtSubject;
 
-        @Override
+
+    @Override
         public void onCreate(SQLiteDatabase sqLiteDatabase) {
 
             try {
                 sqLiteDatabase.execSQL(
                         "create table users " +
-                                "(id integer primary key, subject TEXT)" //
+                                "(id integer primary key, subject TEXT unique)" //
                 );
             }catch (Exception e){
                 System.out.println("Database created successfully" +e);
@@ -50,10 +51,13 @@ public class DBHandler extends SQLiteOpenHelper {
 
         public long addInfo(String subject) {
 
+
             SQLiteDatabase sqLiteDatabase = getWritableDatabase();
 
                 ContentValues values = new ContentValues();
-                values.put(COLUMN_NAME, subject);
+                values.put(COLUMN_NAME,subject);
+                //
+
 
             long newRowId = sqLiteDatabase.insert(TABLE_NAME, null, values);
             return newRowId;

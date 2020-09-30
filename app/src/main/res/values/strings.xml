@@ -7,6 +7,7 @@
     <string name="button">SHOW</string>
     <string name="button3">BACK</string>
     <string name="txt">ID :</string>
-    <string name="button2">SEARCH</string>
+    <string name="button2">SEARCH SUBJECTS</string>
     <string name="btn2">SEARCH</string>
+    <string name="button4">SEARCH TEACHERS</string>
 </resources>
